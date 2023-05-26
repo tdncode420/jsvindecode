@@ -1,0 +1,28 @@
+{
+  "name": "jsvindecode",
+  "version": "1.0.0",
+  "description": "Automotive vin decoder",
+  "main": "jsvindecode.js",
+  "scripts": {
+    "pack": "npx webpack -c cfg.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdncode420/jsvindecode.git"
+  },
+  "keywords": [
+    "automotive",
+    "vin"
+  ],
+  "author": "Renegade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tdncode420/jsvindecode/issues"
+  },
+  "homepage": "https://github.com/tdncode420/jsvindecode#readme",
+  "dependencies": {
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1"
+  }
+}

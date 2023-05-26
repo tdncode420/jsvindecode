@@ -1,4 +1,4 @@
-const manufacturers = [
+export default [
     {
         "code": "4TL",
         "name": "Toyota"

@@ -1,12 +1,8 @@
-const indexes = {
-    MADE_IN_START: 0,
-    MADE_IN_END: 2,
-    MANUFACTURER_START: 0,
-    MANUFACTURER_END: 3,
-    DETAILS_START: 3,
-    DETAILS_END: 8,
-    SECURITY_CODE: 8,
+export default {
+    COUNTRY: [0, 2],
+    MANUFACTURER: [0, 3],
+    INFO: [3, 8],
+    CHECK: 8,
     YEAR: 9,
-    ASSEMBLY_PLANT: 10,
-    SERIAL_NUMBER_START: 11,
+    PLANT: 10
 };

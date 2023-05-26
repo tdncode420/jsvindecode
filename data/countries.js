@@ -1,4 +1,4 @@
-const countries = [
+export default [
     {
         "code": "VF",
         "name": "France"
