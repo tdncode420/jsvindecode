@@ -2,7 +2,7 @@ import Countries from './data/countries.js';
 import Indexes from './data/indexes.js';
 import Manufacturers from './data/manufacturers.js';
 import Years from './data/years.js';
-
+import { transliterations, weights } from './data/vin.js';
 
 export const getCountry = vin => {
     let chars = vin.substr(...Indexes.COUNTRY);
@@ -39,3 +39,47 @@ export const getYear = vin => {
         return pos_years
     }
 };
+
+export const calculateVINCheckDigit = vin => {
+    function isLetter(character) {
+        return /^[a-zA-Z]$/.test(character);
+    }
+    let num_vin = [];
+    let products = [];
+    let sum = 0;
+    for (let i = 0; i < vin.length; i++) {
+        if (i === 8){
+            num_vin.push(0);
+        } else {
+            let char = vin[i];
+            if(isLetter(char)){
+                num_vin.push(transliterations[char.toLowerCase()]);
+            } else {
+                num_vin.push(char);
+            }
+        }
+    }
+    for (let i = 0; i < num_vin.length; i++) {
+        if(i === 8){
+            products.push(0);
+        } else {
+            let num = num_vin[i];
+            let weight = weights[i];
+            products.push(num * weight);
+        }
+    }
+    for (let i = 0; i < products.length; i++) {
+        sum += products[i];
+    }
+    let check_digit = sum % 11;
+    if(check_digit === 10){
+        check_digit = 'X';
+    }
+    return check_digit;
+};
+
+export const validateVINCheckDigit = vin => {
+    let check_digit = calculateVINCheckDigit(vin);
+    return check_digit+"" === vin[8]+"";
+};
+
